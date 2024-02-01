@@ -19,7 +19,7 @@ const startup = async () => {
 
   const response = await fetch(url, {
     method: "POST",
-    body: `${key}:${service}`,
+    body: `${service}`,
     headers: {
       "x-api-key": key,
     },
