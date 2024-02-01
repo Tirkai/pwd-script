@@ -1,3 +1,5 @@
+import { writeText } from "https://deno.land/x/copy_paste/mod.ts";
+
 const startup = async () => {
   const service = prompt("");
   const url = Deno.args[0];
@@ -18,13 +20,14 @@ const startup = async () => {
   const response = await fetch(url, {
     method: "POST",
     body: `${key}:${service}`,
+    headers: {
+      "x-api-key": key,
+    },
   });
 
   const result = await response.text();
 
-  console.log(result);
-
-  prompt("")
+  await writeText(result);
 };
 
 startup();
